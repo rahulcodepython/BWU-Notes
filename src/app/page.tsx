@@ -57,7 +57,7 @@ const notesData: Note[] = [
         subject: 'Full - Stack Development - I (P)',
         title: 'Full Stack - I - Lab Assignment Answer',
         description: 'This is lab assignment answer of Full Stack - I.',
-        format: 'PDF',
+        format: 'Markdown',
         author: '@BWU/BCA/23/406',
         link: 'full-stack-I-lab-assignment-answer'
     },
@@ -66,7 +66,7 @@ const notesData: Note[] = [
         subject: 'PHP and MySQL Lab',
         title: 'PHP - Lab Assignment Answer',
         description: 'This is lab assignment answer of php.',
-        format: 'PDF',
+        format: 'Markdown',
         author: '@BWU/BCA/23/406',
         link: 'php-lab-assignment-answer'
     },
