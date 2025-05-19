@@ -37,11 +37,38 @@ const notesData: Note[] = [
     {
         id: 4,
         subject: 'Design and Analysis of Algorithm (P)',
-        title: 'DAA Lab Assignment Answers',
+        title: 'DAA - Lab Assignment Answer',
         description: 'This is lab assignment answer of DAA.',
         format: 'Markdown',
         author: '@BWU/BCA/23/406',
         link: 'daa-lab-assignment-answer'
+    },
+    {
+        id: 5,
+        subject: 'Full - Stack Development - I (P)',
+        title: 'Full - Stack Development - I (P) Lab Assignment Questions',
+        description: 'This is lab assignment question of Full - Stack Development - I (P).',
+        format: 'PDF',
+        author: '@BWU/BCA/23/406',
+        link: '/Full Stack - I - Lab Assignment Question.pdf'
+    },
+    {
+        id: 6,
+        subject: 'Full - Stack Development - I (P)',
+        title: 'Full Stack - I - Lab Assignment Answer',
+        description: 'This is lab assignment answer of Full Stack - I.',
+        format: 'PDF',
+        author: '@BWU/BCA/23/406',
+        link: 'full-stack-I-lab-assignment-answer'
+    },
+    {
+        id: 7,
+        subject: 'PHP and MySQL Lab',
+        title: 'PHP - Lab Assignment Answer',
+        description: 'This is lab assignment answer of php.',
+        format: 'PDF',
+        author: '@BWU/BCA/23/406',
+        link: 'php-lab-assignment-answer'
     },
 ];
 
