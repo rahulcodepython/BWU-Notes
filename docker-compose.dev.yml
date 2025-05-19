@@ -1,0 +1,20 @@
+services:
+  nextjs-dev:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: nextjs-dev-container
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_INTERVAL=500 # Faster Chokidar polling
+      - WATCHPACK_POLLING=true
+      - WATCHPACK_INTERVAL=500 # Webpack polling interval

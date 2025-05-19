@@ -1,8 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --darkgreen-50: #f0fdf4;
+  --darkgreen-100: #dcfce7;
+  --darkgreen-200: #bbf7d0;
+  --darkgreen-300: #86efac;
+  --darkgreen-400: #4ade80;
+  --darkgreen-500: #22c55e;
+  --darkgreen-600: #16a34a;
+  --darkgreen-700: #15803d;
+  --darkgreen-800: #166534;
+  --darkgreen-900: #14532d;
+  --darkgreen-950: #052e16;
 }
 
 @theme inline {
@@ -12,15 +27,26 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #1a3d1d 0%, #006622 50%, #005940 100%);
+}
+
+@theme {
+  --color-darkgreen-50: var(--darkgreen-50);
+  --color-darkgreen-100: var(--darkgreen-100);
+  --color-darkgreen-200: var(--darkgreen-200);
+  --color-darkgreen-300: var(--darkgreen-300);
+  --color-darkgreen-400: var(--darkgreen-400);
+  --color-darkgreen-500: var(--darkgreen-500);
+  --color-darkgreen-600: var(--darkgreen-600);
+  --color-darkgreen-700: var(--darkgreen-700);
+  --color-darkgreen-800: var(--darkgreen-800);
+  --color-darkgreen-900: var(--darkgreen-900);
+  --color-darkgreen-950: var(--darkgreen-950);
 }
