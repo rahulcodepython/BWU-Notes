@@ -70,6 +70,24 @@ const notesData: Note[] = [
         author: '@BWU/BCA/23/406',
         link: 'php-lab-assignment-answer'
     },
+    {
+        id: 7,
+        subject: 'Design and Analysis of Algorithm (T)',
+        title: 'DAA MCQ Suggestions',
+        description: 'This file contains the suggestions for DAA MCQ.',
+        format: 'PDF',
+        author: '@BWU/BCA/23/406',
+        link: '/DAA MCQ Suggestions.pdf'
+    },
+    {
+        id: 7,
+        subject: 'Full - Stack Development - I (T)',
+        title: 'Full Stack Semester Suggestions',
+        description: 'This file contains the suggestions for Full Stack Semester.',
+        format: 'PDF',
+        author: '@BWU/BCA/23/406',
+        link: '/Full Stack Semester Suggestions.pdf'
+    },
 ];
 
 const App = () => {
