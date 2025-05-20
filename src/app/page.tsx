@@ -88,6 +88,24 @@ const notesData: Note[] = [
         author: '@BWU/BCA/23/406',
         link: '/Full Stack Semester Suggestions.pdf'
     },
+    {
+        id: 8,
+        subject: 'Design and Analysis of Algorithm (T)',
+        title: 'DAA CT-2 Set-1 Questions',
+        description: 'This file contains the questions for DAA CT-2 Set-1.',
+        format: 'PDF',
+        author: '@BWU/BCA/23/406',
+        link: '/BCA47111_SET No 1_Student Copy_Class Test 2.pdf'
+    },
+    {
+        id: 8,
+        subject: 'Design and Analysis of Algorithm (T)',
+        title: 'DAA CT-2 Set-2 Questions',
+        description: 'This file contains the questions for DAA CT-2 Set-2.',
+        format: 'PDF',
+        author: '@BWU/BCA/23/406',
+        link: '/BCA47111_SET No 2_Student Copy_Class Test 2.pdf'
+    },
 ];
 
 const App = () => {
