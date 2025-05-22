@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from './ui/button'
 import { Note, NoteFormData } from '@/types/note'
-import { FileTextIcon } from 'lucide-react';
+import { FileTextIcon, PenBoxIcon, Trash } from 'lucide-react';
 import ModalNoteForm from './modal-note-form';
 
 const AdminNoteCard = ({
@@ -36,10 +36,12 @@ const AdminNoteCard = ({
             <div className='grid grid-cols-2 text-sm gap-4'>
                 <ModalNoteForm submitFn={editNote} edit note={value}>
                     <Button className="w-full bg-darkgreen-900 hover:bg-darkgreen-800 cursor-pointer">
+                        <PenBoxIcon className='mr-2' />
                         Edit Note
                     </Button>
                 </ModalNoteForm>
                 <Button variant='destructive' className='w-full cursor-pointer' onClick={() => deleteNote(value._id)}>
+                    <Trash className='mr-2' />
                     Delete
                 </Button>
             </div>

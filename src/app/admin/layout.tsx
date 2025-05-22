@@ -3,7 +3,7 @@ import React from 'react'
 import { usePathname, useRouter } from 'next/navigation';
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
-    const value = "dfs8d9iu03kfs;@fds9)fd*dfjs";
+    const value = process.env.NEXT_PUBLIC_SECREAT_TOKEN_KEY!;
 
     const [loading, setLoading] = React.useState(true)
 

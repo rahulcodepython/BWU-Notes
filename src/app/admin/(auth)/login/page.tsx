@@ -1,5 +1,7 @@
 "use client"
-import { EyeClosedIcon, EyeOpenIcon, LockClosedIcon, PersonIcon } from '@radix-ui/react-icons';
+import { Button } from '@/components/ui/button';
+import { ReloadIcon } from '@radix-ui/react-icons';
+import { Eye, EyeClosed, Lock, LogIn, User } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { toast } from 'sonner';
@@ -68,7 +70,7 @@ const Login = () => {
                             </label>
                             <div className="relative">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <PersonIcon className="text-darkgreen-400" />
+                                    <User className="text-darkgreen-400 w-4 h-4" />
                                 </div>
                                 <input
                                     type="text"
@@ -85,32 +87,33 @@ const Login = () => {
 
                         <div>
                             <label htmlFor="password" className="block text-sm font-medium text-darkgreen-800 mb-1">Password</label>
-                            <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <LockClosedIcon className="text-darkgreen-400" />
+                            <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-lg border border-darkgreen-200 focus:outline-none input-focus transition-all">
+                                <div className="flex items-center pointer-events-none">
+                                    <Lock className="text-darkgreen-400 w-4 h-4" />
                                 </div>
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     id="password"
                                     name="password"
                                     required
-                                    className="pl-10 w-full px-4 py-3 rounded-lg border border-darkgreen-200 focus:outline-none input-focus transition-all"
+                                    className="w-full flex-1 border-none focus:outline-none placeholder:text-darkgreen-400"
                                     placeholder="••••••••"
                                     value={formData.password}
                                     onChange={handleInputChange}
                                 />
                                 <button
                                     type="button"
-                                    className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-darkgreen-400"
+                                    className="flex items-center text-darkgreen-400 cursor-pointer"
                                     onClick={togglePasswordVisibility}
                                 >
-                                    {showPassword ? <EyeClosedIcon /> : <EyeOpenIcon />}
+                                    {showPassword ? <EyeClosed className='w-4 h-4' /> : <Eye className='w-4 h-4' />}
                                 </button>
                             </div>
                         </div>
-                        <button type="submit" className="w-full bg-darkgreen-600 hover:bg-darkgreen-700 text-white font-semibold py-3 px-4 rounded-lg transition-all btn-hover shadow-md cursor-pointer">
+                        <Button type="submit" className="w-full bg-darkgreen-600 hover:bg-darkgreen-700 text-white cursor-pointer">
                             {loading ? "Signing In..." : "Sign In"}
-                        </button>
+                            {loading ? <ReloadIcon className="animate-spin w-4 h-4 mr-2" /> : <LogIn className="w-4 h-4" />}
+                        </Button>
                     </form>
                 </div>
             </div>

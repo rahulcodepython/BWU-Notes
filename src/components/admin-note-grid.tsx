@@ -6,6 +6,7 @@ import { Note, NoteFormData } from '@/types/note'
 import { toast } from 'sonner'
 import { Button } from './ui/button'
 import { uploadFileToFirebase } from '@/utils/uploadeFile'
+import { PlusCircleIcon } from 'lucide-react'
 
 const AdminNoteGrid = ({ responseData }: { responseData: Note[] }) => {
     const [note, setNote] = React.useState(responseData)
@@ -119,6 +120,7 @@ const AdminNoteGrid = ({ responseData }: { responseData: Note[] }) => {
                 <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
                 <ModalNoteForm submitFn={createNote}>
                     <Button className="bg-darkgreen-900 hover:bg-darkgreen-800 cursor-pointer">
+                        <PlusCircleIcon className='mr-2' />
                         Create New Note
                     </Button>
                 </ModalNoteForm>
