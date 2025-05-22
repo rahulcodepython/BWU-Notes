@@ -2,6 +2,7 @@
 import { EyeClosedIcon, EyeOpenIcon, LockClosedIcon, PersonIcon } from '@radix-ui/react-icons';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { toast } from 'sonner';
 
 const Login = () => {
     const [loading, setLoading] = React.useState(false);
@@ -18,10 +19,10 @@ const Login = () => {
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value, type, checked } = e.target;
+        const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
-            [name]: type === 'checkbox' ? checked : value
+            [name]: value
         }));
     };
 
@@ -39,7 +40,7 @@ const Login = () => {
                     localStorage.setItem('token', data.token);
                     router.push('/admin');
                 } else {
-                    alert('Invalid credentials');
+                    toast('Invalid credentials');
                 }
             }).finally(() => {
                 setLoading(false);

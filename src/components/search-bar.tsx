@@ -40,11 +40,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ setNotes, notesData }) => {
     }, [selectedSubject, selectedFileCategory, searchTerm, setNotes, notesData]);
 
     return (
-        <div className="container mx-auto px-4 -mt-8 z-10 relative">
+        <div className="container mx-auto px-4 -mt-16 md:-mt-24 z-10 relative">
             <div className="max-w-4xl mx-auto">
                 <div className="flex flex-col gap-4 bg-white rounded-lg p-4 shadow-lg">
                     <form>
-                        <div className="flex flex-col lg:flex-row items-center gap-4">
+                        <div className="flex flex-col items-center gap-4">
                             <input
                                 type="text"
                                 name="search"
@@ -53,9 +53,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ setNotes, notesData }) => {
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
-                            <div className='flex flex-col lg:flex-row items-center gap-2 w-full'>
-                                <span className="text-gray-600 text-left w-full lg:w-auto">Filter by:</span>
-                                <div className='flex flex-col lg:flex-row items-center justify-center gap-2 flex-1 w-full'>
+                            <div className='flex flex-col items-center gap-2 w-full'>
+                                <div className='flex flex-col items-center justify-center gap-2 flex-1 w-full'>
                                     <select
                                         className="w-full border border-gray-200 text-black rounded-md px-4 py-2 focus:outline-none focus:ring-0 focus:ring-darkgreen-500"
                                         value={selectedSubject}

@@ -21,4 +21,7 @@ export const FILE_CATEGORIES_LIST: FileCategoryType[] = [
     "Answer Paper CT-1 Set-2",
     "Answer Paper CT-2 Set-1",
     "Answer Paper CT-2 Set-2",
+    "Lab Assignment Front & Index Page",
+    "Theory Assignment Front & Index Page",
+    "Others"
 ];

@@ -34,11 +34,11 @@ const App = () => {
             <Hero />
             <SearchBar setNotes={setFilteredNotes} notesData={notes} />
             <div className="container mx-auto px-4 py-16 flex flex-col gap-8">
-                <div className="flex items-center justify-between px-4 md:px-8">
-                    <h2 className="text-2xl font-semibold text-gray-800">
+                <div className="flex flex-col md:flex-row gap-2 items-center justify-between px-4 md:px-0 w-full">
+                    <h2 className="text-xl xl:text-2xl font-semibold text-gray-800 text-left w-full md:w-auto">
                         You will find all your notes here
                     </h2>
-                    <h2 className="text-gray-800">
+                    <h2 className="text-gray-800 text-right text-sm w-full md:w-auto">
                         Total {notes.length} Notes &#x2022; Filtered {filteredNotes.length} Notes
                     </h2>
                 </div>

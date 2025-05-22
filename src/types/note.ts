@@ -2,7 +2,7 @@ export type SubjectType = "Design and Analysis of Algorithm (P)" | "Design and A
 
 export type FileFormatType = "PDF" | "Image" | "Markdown"
 
-export type FileCategoryType = "Lab Assignment Question" | "Lab Assignment Answer" | "Class Assignment Question" | "Class Assignment Answer" | "Suggestion" | "Study Material" | "Notes" | "Question Paper" | "Answer Key" | "Syllabus" | "Question Paper CT-1 Set-1" | "Question Paper CT-1 Set-2" | "Question Paper CT-2 Set-1" | "Question Paper CT-2 Set-2" | "Answer Paper CT-1 Set-1" | "Answer Paper CT-1 Set-2" | "Answer Paper CT-2 Set-1" | "Answer Paper CT-2 Set-2"
+export type FileCategoryType = "Lab Assignment Question" | "Lab Assignment Answer" | "Class Assignment Question" | "Class Assignment Answer" | "Suggestion" | "Study Material" | "Notes" | "Question Paper" | "Answer Key" | "Syllabus" | "Question Paper CT-1 Set-1" | "Question Paper CT-1 Set-2" | "Question Paper CT-2 Set-1" | "Question Paper CT-2 Set-2" | "Answer Paper CT-1 Set-1" | "Answer Paper CT-1 Set-2" | "Answer Paper CT-2 Set-1" | "Answer Paper CT-2 Set-2" | "Lab Assignment Front & Index Page" | "Theory Assignment Front & Index Page" | "Others"
 
 
 export interface Note {
