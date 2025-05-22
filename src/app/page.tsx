@@ -124,7 +124,7 @@ import React from "react";
 //     },
 // ];
 
-const App = async () => {
+const App = () => {
     const [notes, setNotes] = React.useState<Note[]>([]);
 
     React.useEffect(() => {
