@@ -1,150 +1,56 @@
 "use client"
+import Hero from "@/components/hero";
 import NotesGrid from "@/components/notes-grid";
+import SearchBar from "@/components/search-bar";
 import { Note } from '@/types/note';
 import React from "react";
 
-
-// const notesData: Note[] = [
-//     {
-//         id: 1,
-//         subject: 'Computer Network',
-//         title: 'Computer Network Suggestions',
-//         description: 'This file contains the suggestions for computer network question 3 and 5.',
-//         format: 'PDF',
-//         author: '@BWU/BCA/23/406',
-//         link: '/Computer Network Suggestions.pdf'
-//     },
-//     {
-//         id: 2,
-//         subject: 'Design and Analysis of Algorithm (P)',
-//         title: 'DAA Lab Assignment Questions',
-//         description: 'This file contains the lab assignment questions for DAA.',
-//         format: 'PDF',
-//         author: '@BWU/BCA/23/406',
-//         link: '/DAA Lab Assignment Questions.pdf'
-//     },
-//     {
-//         id: 3,
-//         subject: 'PHP and MySQL Lab',
-//         title: 'PHP Lab Assignment Questions',
-//         description: 'This file contains the lab assignment questions for PHP and MySQL.',
-//         format: 'PDF',
-//         author: '@BWU/BCA/23/406',
-//         link: '/PHP Lab Assignment Questions.pdf'
-//     },
-//     {
-//         id: 4,
-//         subject: 'Design and Analysis of Algorithm (P)',
-//         title: 'DAA Lab Assignment Answer',
-//         description: 'This is lab assignment answer of DAA.',
-//         format: 'Markdown',
-//         author: '@BWU/BCA/23/406',
-//         link: 'daa-lab-assignment-answer'
-//     },
-//     {
-//         id: 5,
-//         subject: 'Full - Stack Development - I (P)',
-//         title: 'Full Stack Development I (P) Lab Assignment Questions',
-//         description: 'This is lab assignment question of Full - Stack Development - I (P).',
-//         format: 'PDF',
-//         author: '@BWU/BCA/23/406',
-//         link: '/Full Stack - I - Lab Assignment Question.pdf'
-//     },
-//     {
-//         id: 6,
-//         subject: 'Full - Stack Development - I (P)',
-//         title: 'Full Stack I Lab Assignment Answer',
-//         description: 'This is lab assignment answer of Full Stack - I.',
-//         format: 'Markdown',
-//         author: '@BWU/BCA/23/406',
-//         link: 'full-stack-I-lab-assignment-answer'
-//     },
-//     {
-//         id: 7,
-//         subject: 'PHP and MySQL Lab',
-//         title: 'PHP Lab Assignment Answer',
-//         description: 'This is lab assignment answer of php.',
-//         format: 'Markdown',
-//         author: '@BWU/BCA/23/406',
-//         link: 'php-lab-assignment-answer'
-//     },
-//     {
-//         id: 8,
-//         subject: 'Design and Analysis of Algorithm (T)',
-//         title: 'DAA MCQ Suggestions',
-//         description: 'This file contains the suggestions for DAA MCQ.',
-//         format: 'PDF',
-//         author: '@BWU/BCA/23/406',
-//         link: '/DAA MCQ Suggestions.pdf'
-//     },
-//     {
-//         id: 9,
-//         subject: 'Full - Stack Development - I (T)',
-//         title: 'Full Stack Semester Suggestions',
-//         description: 'This file contains the suggestions for Full Stack Semester.',
-//         format: 'PDF',
-//         author: '@BWU/BCA/23/406',
-//         link: '/Full Stack Semester Suggestions.pdf'
-//     },
-//     {
-//         id: 10,
-//         subject: 'Design and Analysis of Algorithm (T)',
-//         title: 'DAA CT-2 Set-1 Questions',
-//         description: 'This file contains the questions for DAA CT-2 Set-1.',
-//         format: 'PDF',
-//         author: '@BWU/BCA/23/406',
-//         link: '/BCA47111_SET No 1_Student Copy_Class Test 2.pdf'
-//     },
-//     {
-//         id: 11,
-//         subject: 'Design and Analysis of Algorithm (T)',
-//         title: 'DAA CT-2 Set-2 Questions',
-//         description: 'This file contains the questions for DAA CT-2 Set-2.',
-//         format: 'PDF',
-//         author: '@BWU/BCA/23/406',
-//         link: '/BCA47111_SET No 2_Student Copy_Class Test 2.pdf'
-//     },
-//     {
-//         id: 12,
-//         subject: 'Design and Analysis of Algorithm (T)',
-//         title: 'DAA CT-1 Set-1 Questions',
-//         description: 'This file contains the questions for DAA CT-1 Set-1.',
-//         format: 'PDF',
-//         author: '@BWU/BCA/23/406',
-//         link: '/BCA47111(T)_SET 1_Student Copy.pdf'
-//     },
-//     {
-//         id: 13,
-//         subject: 'Design and Analysis of Algorithm (T)',
-//         title: 'DAA CT-1 Set-2 Questions',
-//         description: 'This file contains the questions for DAA CT-1 Set-2.',
-//         format: 'PDF',
-//         author: '@BWU/BCA/23/406',
-//         link: '/BCA47111(T)_SET 2_Student Copy.pdf'
-//     },
-// ];
-
 const App = () => {
     const [notes, setNotes] = React.useState<Note[]>([]);
+    const [filteredNotes, setFilteredNotes] = React.useState<Note[]>([]);
+    const [loading, setLoading] = React.useState<boolean>(true);
 
     React.useEffect(() => {
         const fetchNotes = async () => {
+            setLoading(true);
             const response = await fetch(`/api/notes`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 cache: 'no-store'
-            })
+            });
             const notesData: Note[] = await response.json();
             setNotes(notesData);
+            setFilteredNotes(notesData);
+            setLoading(false);
         };
 
         fetchNotes();
     }, []);
 
     return (
-        <NotesGrid notes={notes} />
+        <section className="flex flex-col flex-1">
+            <Hero />
+            <SearchBar setNotes={setFilteredNotes} notesData={notes} />
+            <div className="container mx-auto px-4 py-16 flex flex-col gap-8">
+                <div className="flex items-center justify-between px-4 md:px-8">
+                    <h2 className="text-2xl font-semibold text-gray-800">
+                        You will find all your notes here
+                    </h2>
+                    <h2 className="text-gray-800">
+                        Total {notes.length} Notes &#x2022; Filtered {filteredNotes.length} Notes
+                    </h2>
+                </div>
+                {loading ? (
+                    <div className="flex justify-center items-center py-16">
+                        <span className="text-lg text-gray-500">Loading...</span>
+                    </div>
+                ) : (
+                    <NotesGrid notes={filteredNotes} />
+                )}
+            </div>
+        </section>
     );
 };
 
