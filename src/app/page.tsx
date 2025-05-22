@@ -132,6 +132,9 @@ const App = async () => {
     })
     const notesData: Note[] = await response.json();
 
+    console.log(notesData)
+    console.log(process.env.API_URL)
+
     return (
         <NotesGrid notes={notesData} />
     );
