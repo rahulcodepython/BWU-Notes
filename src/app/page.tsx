@@ -1,5 +1,7 @@
+"use client"
 import NotesGrid from "@/components/notes-grid";
 import { Note } from '@/types/note';
+import React from "react";
 
 
 // const notesData: Note[] = [
@@ -123,20 +125,26 @@ import { Note } from '@/types/note';
 // ];
 
 const App = async () => {
-    const response = await fetch(`${process.env.API_URL}/api/notes`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        cache: 'no-store'
-    })
-    const notesData: Note[] = await response.json();
+    const [notes, setNotes] = React.useState<Note[]>([]);
 
-    console.log(notesData)
-    console.log(process.env.API_URL)
+    React.useEffect(() => {
+        const fetchNotes = async () => {
+            const response = await fetch(`/api/notes`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                cache: 'no-store'
+            })
+            const notesData: Note[] = await response.json();
+            setNotes(notesData);
+        };
+
+        fetchNotes();
+    }, []);
 
     return (
-        <NotesGrid notes={notesData} />
+        <NotesGrid notes={notes} />
     );
 };
 
