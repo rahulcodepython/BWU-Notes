@@ -36,12 +36,12 @@ const AdminNoteCard = ({
             <div className='grid grid-cols-2 text-sm gap-4'>
                 <ModalNoteForm submitFn={editNote} edit note={value}>
                     <Button className="w-full bg-darkgreen-900 hover:bg-darkgreen-800 cursor-pointer">
-                        <PenBoxIcon className='mr-2' />
+                        <PenBoxIcon className='-mt-1' />
                         Edit Note
                     </Button>
                 </ModalNoteForm>
                 <Button variant='destructive' className='w-full cursor-pointer' onClick={() => deleteNote(value._id)}>
-                    <Trash className='mr-2' />
+                    <Trash className='-mt-1' />
                     Delete
                 </Button>
             </div>

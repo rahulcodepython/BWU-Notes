@@ -118,9 +118,12 @@ const AdminNoteGrid = ({ responseData }: { responseData: Note[] }) => {
         <div className='flex flex-col gap-8'>
             <div className='flex flex-col md:flex-row items-center justify-between w-full gap-8'>
                 <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
+                <p className="text-gray-600">
+                    Total Notes: {note.length}
+                </p>
                 <ModalNoteForm submitFn={createNote}>
                     <Button className="bg-darkgreen-900 hover:bg-darkgreen-800 cursor-pointer">
-                        <PlusCircleIcon className='mr-2' />
+                        <PlusCircleIcon className='' />
                         Create New Note
                     </Button>
                 </ModalNoteForm>
