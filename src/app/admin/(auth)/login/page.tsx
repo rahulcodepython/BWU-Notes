@@ -1,4 +1,5 @@
 "use client"
+import { Button } from '@/components/ui/button';
 import { ReloadIcon } from '@radix-ui/react-icons';
 import { Eye, EyeClosed, Lock, LogIn, User } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -109,10 +110,10 @@ const Login = () => {
                                 </button>
                             </div>
                         </div>
-                        <button type="submit" className="w-full bg-darkgreen-600 hover:bg-darkgreen-700 text-white cursor-pointer">
+                        <Button type="submit" className="w-full bg-darkgreen-600 hover:bg-darkgreen-700 text-white cursor-pointer">
                             {loading ? "Signing In..." : "Sign In"}
                             {loading ? <ReloadIcon className="animate-spin w-4 h-4 mr-2" /> : <LogIn className="w-4 h-4" />}
-                        </button>
+                        </Button>
                     </form>
                 </div>
             </div>

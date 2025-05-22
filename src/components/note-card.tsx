@@ -1,11 +1,12 @@
 import { Note } from "@/types/note";
 import React from "react";
-import { DownloadIcon, ReaderIcon } from "@radix-ui/react-icons";
 import { FileTextIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import { Button } from "./ui/button";
+import { Download, File } from "lucide-react";
 
 
-const NoteCard: React.FC<Note> = ({ subject, title, description, format, pages, author, link }) => {
+const NoteCard: React.FC<Note> = ({ subject, title, description, format, author, _id, link }) => {
     const icon = format === "PDF" ? <FileTextIcon className="inline mr-0.5 -mt-1 w-4 h-4" /> : null;
 
     return (
@@ -23,15 +24,14 @@ const NoteCard: React.FC<Note> = ({ subject, title, description, format, pages, 
                     {icon}
                     {format}
                 </span>
-                {pages && <span className="text-gray-500">{pages} pages</span>}
             </div>
             {
-                format === "PDF" ? <button className="w-full text-white bg-darkgreen-900 hover:bg-darkgreen-800 rounded-lg text-sm px-5 py-2.5 flex items-center justify-center cursor-pointer transition-colors duration-200"
+                format === "PDF" ? <Button className="w-full bg-darkgreen-900 hover:bg-darkgreen-800 cursor-pointer"
                     onClick={() => window.open(link, "_blank")}>
-                    <DownloadIcon className="inline mr-2 -mt-1 w-4 h-4" />
+                    <Download className="inline mr-2 -mt-1 w-4 h-4" />
                     Download
-                </button> : format === "Markdown" ? <Link href={`/read/${link}`} className="w-full text-white bg-darkgreen-900 hover:bg-darkgreen-800 rounded-lg text-sm px-5 py-2.5 flex items-center justify-center cursor-pointer transition-colors duration-200">
-                    <ReaderIcon className="inline mr-2 -mt-1 w-4 h-4" />
+                </Button> : format === "Markdown" ? <Link href={`/read/${_id}`} className="w-full text-white bg-darkgreen-900 hover:bg-darkgreen-800 rounded-lg text-sm px-5 py-2.5 flex items-center justify-center cursor-pointer transition-colors duration-200">
+                    <File className="inline mr-2 -mt-1 w-4 h-4" />
                     View
                 </Link> : null
             }

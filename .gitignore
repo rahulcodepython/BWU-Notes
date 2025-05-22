@@ -4,3 +4,4 @@ out
 dist
 demo
 .env.local
+.dockerignore
