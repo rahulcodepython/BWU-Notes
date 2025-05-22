@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { Toaster } from "@/components/ui/sonner"
 
 export const metadata: Metadata = {
     title: "NotesHub | Notes Sharing Platform",
@@ -21,6 +22,7 @@ export default function RootLayout({
                     {children}
                     <Footer />
                 </main>
+                <Toaster />
             </body>
         </html>
     );
