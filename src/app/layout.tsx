@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner"
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
     title: "NotesHub | Notes Sharing Platform",
@@ -23,6 +24,7 @@ export default function RootLayout({
                     <Footer />
                 </main>
                 <Toaster />
+                <Analytics mode="production" />
             </body>
         </html>
     );

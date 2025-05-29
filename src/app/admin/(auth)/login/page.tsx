@@ -28,29 +28,34 @@ const Login = () => {
         }));
     };
 
+    const authenticateUser = async (formData: { username: string; password: string; }): Promise<void> => {
+        if (!formData.username || !formData.password) {
+            toast.error('Please fill in all fields');
+            return;
+        }
+
+        if (formData.username !== process.env.NEXT_PUBLIC_ADMIN_USERNAME || formData.password !== process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
+            toast.error('Invalid credentials');
+            return;
+        }
+
+        toast.success('Login successful');
+        localStorage.setItem('token', process.env.NEXT_PUBLIC_SECREAT_TOKEN_KEY || '');
+        router.push('/admin');
+        return Promise.resolve();
+    }
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setLoading(true);
 
-        await fetch('/api/user', {
-            method: 'POST',
-            body: JSON.stringify(formData),
-        })
-            .then(res => res.json())
-            .then((data: { token: string | null }) => {
-                if (data.token) {
-                    localStorage.setItem('token', data.token);
-                    router.push('/admin');
-                } else {
-                    toast('Invalid credentials');
-                }
-            }).finally(() => {
-                setLoading(false);
-                setFormData({
-                    username: '',
-                    password: '',
-                })
-            })
+        setLoading(true);
+        await authenticateUser(formData).finally(() => {
+            setLoading(false);
+            setFormData({
+                username: '',
+                password: '',
+            });
+        });
     };
 
     return (

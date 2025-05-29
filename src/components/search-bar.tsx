@@ -3,10 +3,12 @@ import { FILE_CATEGORIES_LIST, SUBJECT_LIST } from '@/constants';
 import { FileCategoryType, Note, SubjectType } from '@/types/note';
 import { useState, useEffect } from 'react';
 import React from "react";
+import { cn } from '@/lib/utils';
 
 type SearchBarProps = {
     setNotes: React.Dispatch<React.SetStateAction<Note[]>>;
     notesData: Note[];
+    className?: string;
 };
 
 type SEARCH_SUBJECTS_TYPE = SubjectType | 'All Subjects';
@@ -22,7 +24,7 @@ const SEARCH_FILE_CATEGORIES: SEARCH_FILE_CATEGORIES_TYPE[] = [
 ];
 
 
-const SearchBar: React.FC<SearchBarProps> = ({ setNotes, notesData }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ setNotes, notesData, className }) => {
     const [selectedSubject, setSelectedSubject] = useState<SEARCH_SUBJECTS_TYPE>('All Subjects');
     const [selectedFileCategory, setSelectedFileCategory] = useState<SEARCH_FILE_CATEGORIES_TYPE>('All File Categories');
     const [searchTerm, setSearchTerm] = useState('');
@@ -40,7 +42,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ setNotes, notesData }) => {
     }, [selectedSubject, selectedFileCategory, searchTerm, setNotes, notesData]);
 
     return (
-        <div className="container mx-auto px-4 -mt-16 md:-mt-24 z-10 relative">
+        <div className={cn("container mx-auto px-4 -mt-16 md:-mt-24 z-10 relative", className)}>
             <div className="max-w-4xl mx-auto">
                 <div className="flex flex-col gap-4 bg-white rounded-lg p-4 shadow-lg">
                     <form>
