@@ -11,6 +11,10 @@ import { PlusCircleIcon } from 'lucide-react'
 const AdminNoteGrid = ({ responseData }: { responseData: Note[] }) => {
     const [note, setNote] = React.useState(responseData)
 
+    React.useEffect(() => {
+        setNote(responseData);
+    }, [responseData]);
+
     const createNote = async (formData: NoteFormData) => {
         if (!formData.document) {
             toast('No document selected');

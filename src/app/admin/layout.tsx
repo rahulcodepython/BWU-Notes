@@ -3,7 +3,7 @@ import React from 'react'
 import { usePathname, useRouter } from 'next/navigation';
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
-    const value = process.env.NEXT_PUBLIC_SECREAT_TOKEN_KEY!;
+    const value = process.env.NEXT_PUBLIC_SECREAT_TOKEN_KEY;
 
     const [loading, setLoading] = React.useState(true)
 
@@ -12,6 +12,8 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
 
     React.useEffect(() => {
         const token = localStorage.getItem("token")
+
+        console.log(token, value)
 
         if (token === value) {
             if (pathname === '/admin/login') {

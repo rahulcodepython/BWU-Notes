@@ -1,4 +1,4 @@
-export type SubjectType = "Design and Analysis of Algorithm (P)" | "Design and Analysis of Algorithm (T)" | "PHP and MySQL Lab" | "Full Stack Development - I (P)" | "Full Stack Development - I (T)" | "Sustainability in Indian Knowledge System" | "Computer Network" | "Alternative English"
+export type SubjectType = "Design and Analysis of Algorithm (P)" | "Design and Analysis of Algorithm (T)" | "PHP and MySQL Lab" | "Full Stack Development - I (P)" | "Full Stack Development - I (T)" | "Sustainability in Indian Knowledge System" | "Computer Network" | "Alternative English" | "Aptitude"
 
 export type FileFormatType = "PDF" | "Image" | "Markdown"
 
