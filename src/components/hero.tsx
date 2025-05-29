@@ -6,7 +6,8 @@ const Hero = () => {
                     <h1 className="text-4xl md:text-5xl font-bold mb-6">Share & Discover Study Notes</h1>
                     <p className="text-xl mb-8 opacity-90">
                         Upload your notes, help others learn, and find the perfect study materials for your courses.
-                        Join our community of learners today!
+                        Join our community of learners today! <br />
+                        <span className="font-semibold">Note: This is valid for only this semester.</span>
                     </p>
                 </div>
             </div>
