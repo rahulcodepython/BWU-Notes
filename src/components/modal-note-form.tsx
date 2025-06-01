@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { Button } from "@/components/ui/button";
 import {
     Dialog,
     DialogContent,
@@ -8,25 +8,27 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { Input } from './ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+} from "@/components/ui/dialog";
+import { FILE_CATEGORIES_LIST, SUBJECT_LIST } from '@/constants';
 import { FileCategoryType, FileFormatType, Note, NoteFormData, SubjectType } from '@/types/note';
-import { RadioGroup, RadioGroupItem } from './ui/radio-group';
-import { Label } from './ui/label';
-import { Textarea } from './ui/textarea';
 import Link from 'next/link';
-import { SUBJECT_LIST, FILE_CATEGORIES_LIST } from '@/constants';
+import React, { useState } from 'react';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
+import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { Textarea } from './ui/textarea';
 
 const ModalNoteForm = ({
     children,
     submitFn,
+    setNote,
     edit = false,
     note = null
 }: {
     children: React.ReactNode
-    submitFn: (formData: NoteFormData) => Promise<void>
+    submitFn: (formData: NoteFormData, setNote: React.Dispatch<React.SetStateAction<Note[]>>) => Promise<void>
+    setNote: React.Dispatch<React.SetStateAction<Note[]>>
     edit?: boolean
     note?: Note | null
 }) => {
@@ -46,15 +48,16 @@ const ModalNoteForm = ({
     const [isOpen, setIsOpen] = useState(false);
 
     React.useEffect(() => {
+        if (edit && note) return
         if (formData.subject && formData.fileCategory) {
-            const shortSubject = formData.subject.split('(')[0].trim();
+            const shortSubject = formData.subject.trim();
             const title = `${shortSubject} - ${formData.fileCategory}`;
             setFormData(prev => ({
                 ...prev,
                 title: title
             }));
         }
-    }, [formData.subject, formData.fileCategory]);
+    }, [formData.subject, formData.fileCategory, edit]);
 
     React.useEffect(() => {
         if (edit && note) {
@@ -95,7 +98,7 @@ const ModalNoteForm = ({
 
         setLoading(true);
 
-        submitFn(formData)
+        submitFn(formData, setNote)
             .finally(() => {
                 setFormData({
                     uploader: DEFAULT_UPLOADER,
