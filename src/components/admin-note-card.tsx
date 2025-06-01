@@ -1,17 +1,16 @@
-import React from 'react'
-import { Button } from './ui/button'
-import { Note, NoteFormData } from '@/types/note'
+import { Note } from '@/types/note';
+import { deleteNote, editNote } from '@/utils/notes';
 import { FileTextIcon, PenBoxIcon, Trash } from 'lucide-react';
+import React from 'react';
 import ModalNoteForm from './modal-note-form';
+import { Button } from './ui/button';
 
 const AdminNoteCard = ({
     value,
-    deleteNote,
-    editNote
+    setNote
 }: {
     value: Note
-    deleteNote: (id: number) => void
-    editNote: (formData: NoteFormData) => Promise<void>
+    setNote: React.Dispatch<React.SetStateAction<Note[]>>
 }) => {
     const icon = value.format === "PDF" ? <FileTextIcon className="inline mr-0.5 -mt-1 w-4 h-4" /> : null;
 
@@ -34,13 +33,13 @@ const AdminNoteCard = ({
                 </span>
             </div>
             <div className='grid grid-cols-2 text-sm gap-4'>
-                <ModalNoteForm submitFn={editNote} edit note={value}>
+                <ModalNoteForm submitFn={editNote} edit note={value} setNote={setNote}>
                     <Button className="w-full bg-darkgreen-900 hover:bg-darkgreen-800 cursor-pointer">
                         <PenBoxIcon className='-mt-1' />
                         Edit Note
                     </Button>
                 </ModalNoteForm>
-                <Button variant='destructive' className='w-full cursor-pointer' onClick={() => deleteNote(value._id)}>
+                <Button variant='destructive' className='w-full cursor-pointer' onClick={() => deleteNote(value._id, setNote)}>
                     <Trash className='-mt-1' />
                     Delete
                 </Button>
