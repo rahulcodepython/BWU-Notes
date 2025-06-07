@@ -9,15 +9,15 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { FILE_CATEGORIES_LIST, SUBJECT_LIST } from '@/constants';
 import { FileCategoryType, FileFormatType, Note, NoteFormData, SubjectType } from '@/types/note';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
-import { RadioGroup, RadioGroupItem } from './ui/radio-group';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Textarea } from './ui/textarea';
 
 const ModalNoteForm = ({
     children,
@@ -57,7 +57,7 @@ const ModalNoteForm = ({
                 title: title
             }));
         }
-    }, [formData.subject, formData.fileCategory, edit]);
+    }, [formData.subject, formData.fileCategory, edit, note]);
 
     React.useEffect(() => {
         if (edit && note) {
