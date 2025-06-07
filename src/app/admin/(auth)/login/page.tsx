@@ -29,20 +29,30 @@ const Login = () => {
     };
 
     const authenticateUser = async (formData: { username: string; password: string; }): Promise<void> => {
-        if (!formData.username || !formData.password) {
-            toast.error('Please fill in all fields');
-            return;
-        }
+        try {
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
 
-        if (formData.username !== process.env.NEXT_PUBLIC_ADMIN_USERNAME || formData.password !== process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
-            toast.error('Invalid credentials');
-            return;
-        }
+            if (!response.ok) {
+                const errorData = await response.json();
+                toast.error(errorData.message || 'Login failed');
+            }
 
-        toast.success('Login successful');
-        localStorage.setItem('token', process.env.NEXT_PUBLIC_SECREAT_TOKEN_KEY || '');
-        router.push('/admin');
-        return Promise.resolve();
+            const data = await response.json();
+            toast.success(data.message || 'Login successful');
+            router.push('/admin');
+        } catch (error) {
+            if (error instanceof Error) {
+                toast.error(error.message || 'An error occurred during login');
+            } else {
+                toast.error('An error occurred during login');
+            }
+        }
     }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

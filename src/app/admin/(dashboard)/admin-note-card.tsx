@@ -1,9 +1,9 @@
+import { Button } from '@/components/ui/button';
 import { Note } from '@/types/note';
 import { deleteNote, editNote } from '@/utils/notes';
 import { FileTextIcon, PenBoxIcon, Trash } from 'lucide-react';
 import React from 'react';
 import ModalNoteForm from './modal-note-form';
-import { Button } from './ui/button';
 
 const AdminNoteCard = ({
     value,
