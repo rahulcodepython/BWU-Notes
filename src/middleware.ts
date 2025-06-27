@@ -11,11 +11,11 @@ export function middleware(request: NextRequest) {
 
     // If trying to access admin but not authenticated
     if (pathname.startsWith('/admin') && !isAuthenticated) {
-        return NextResponse.redirect(new URL('/admin/login', request.url))
+        return NextResponse.redirect(new URL('/login', request.url))
     }
 
     // If trying to access login page but already authenticated
-    if (pathname.startsWith('/admin/login') && isAuthenticated) {
+    if (pathname.startsWith('/login') && isAuthenticated) {
         return NextResponse.redirect(new URL('/admin', request.url))
     }
 
