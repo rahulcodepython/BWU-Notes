@@ -1,20 +1,7 @@
 import { Note, NoteFormData } from "@/types/note";
 import { toast } from "sonner";
-import { uploadFileToFirebase } from "./uploadeFile";
 
 export const createNote = async (formData: NoteFormData, setNote: React.Dispatch<React.SetStateAction<Note[]>>) => {
-    if (!formData.document) {
-        toast('No document selected');
-        return;
-    }
-
-    const link = await uploadFileToFirebase(formData.document);
-
-    if (!link) {
-        toast('Error uploading file');
-        return;
-    }
-
     const noteData = {
         subject: formData.subject,
         title: formData.title,
@@ -22,7 +9,7 @@ export const createNote = async (formData: NoteFormData, setNote: React.Dispatch
         format: formData.fileFormat,
         author: formData.uploader,
         fileCategory: formData.fileCategory,
-        link: link,
+        link: formData.link,
     }
 
     await fetch('/api/note', {
@@ -43,17 +30,6 @@ export const createNote = async (formData: NoteFormData, setNote: React.Dispatch
 }
 
 export const editNote = async (formData: NoteFormData, setNote: React.Dispatch<React.SetStateAction<Note[]>>) => {
-    let newLink;
-
-    if (formData.document) {
-        newLink = await uploadFileToFirebase(formData.document);
-
-        if (!newLink) {
-            toast('Error uploading file');
-            return;
-        }
-    }
-
     if (!formData._id) {
         toast('No ID provided');
         return;
@@ -67,7 +43,7 @@ export const editNote = async (formData: NoteFormData, setNote: React.Dispatch<R
         fileCategory: formData.fileCategory,
         format: formData.fileFormat,
         author: formData.uploader,
-        link: newLink ?? formData.link,
+        link: formData.link,
     }
 
     await fetch('/api/note', {

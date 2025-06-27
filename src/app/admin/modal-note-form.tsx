@@ -1,5 +1,6 @@
 'use client';
 
+import FileUpload from "@/components/file-upload";
 import { Button } from "@/components/ui/button";
 import {
     Dialog,
@@ -16,7 +17,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { FILE_CATEGORIES_LIST, SUBJECT_LIST } from '@/constants';
 import { FileCategoryType, FileFormatType, Note, NoteFormData, SubjectType } from '@/types/note';
-import Link from 'next/link';
 import React, { useState } from 'react';
 
 const ModalNoteForm = ({
@@ -42,7 +42,7 @@ const ModalNoteForm = ({
         fileFormat: 'PDF',
         title: '',
         description: '',
-        document: null,
+        link: ""
     });
     const [loading, setLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
@@ -70,28 +70,27 @@ const ModalNoteForm = ({
                 title: note.title,
                 description: note.description,
                 link: note.link,
-                document: null,
             });
         }
     }, [edit, note]);
 
-    const handleInputChange = (name: string, value: string | File) => {
+    const handleInputChange = (name: string, value: string) => {
         setFormData(prev => ({
             ...prev,
             [name]: value,
         }));
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0] || null;
+    // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     const file = e.target.files?.[0] || null;
 
-        if (!file) return;
+    //     if (!file) return;
 
-        setFormData(prev => ({
-            ...prev,
-            document: file
-        }));
-    };
+    //     setFormData(prev => ({
+    //         ...prev,
+    //         document: file
+    //     }));
+    // };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -106,7 +105,7 @@ const ModalNoteForm = ({
                     fileCategory: '',
                     fileFormat: 'PDF',
                     title: '',
-                    document: null,
+                    link: '',
                     description: '',
                 });
                 setLoading(false);
@@ -242,7 +241,7 @@ const ModalNoteForm = ({
                                 </RadioGroup>
                             </div>
 
-                            <div className='flex flex-col gap-2'>
+                            {/* <div className='flex flex-col gap-2'>
                                 <label htmlFor="document" className="block text-sm font-medium text-gray-700">
                                     File
                                 </label>
@@ -260,7 +259,14 @@ const ModalNoteForm = ({
                                     accept=".pdf, .md"
                                     onChange={handleFileChange}
                                 />
-                            </div>
+                            </div> */}
+                            <FileUpload
+                                label="File"
+                                onChange={(field, url) => handleInputChange('link', url)}
+                                field="link"
+                                accept={formData.fileFormat === 'PDF' ? 'pdf' : 'md'}
+                                value={formData.link}
+                            />
 
                             <Button type="submit" className="w-full bg-darkgreen-900 hover:bg-darkgreen-800 cursor-pointer transition-colors duration-200">
                                 {loading ? 'Loading...' : edit ? 'Update Note' : 'Create Note'}
