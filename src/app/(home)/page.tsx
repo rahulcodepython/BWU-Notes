@@ -10,7 +10,13 @@ const App = async () => {
         next: { revalidate: 120 },
     });
 
-    const notes: Note[] = await res.json();
+    let notes: Note[]
+
+    if (!res.ok) {
+        notes = [];
+    }
+
+    notes = await res.json();
 
     return (
         <HomeLayout notes={notes} />
