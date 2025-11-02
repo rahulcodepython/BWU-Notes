@@ -1,6 +1,6 @@
 import { FileCategoryType, SubjectType } from "@/types/note";
 
-export const SUBJECT_LIST: SubjectType[] = ["Design and Analysis of Algorithm (P)", "Design and Analysis of Algorithm (T)", "PHP and MySQL Lab", "Full Stack Development - I (P)", "Full Stack Development - I (T)", "Sustainability in Indian Knowledge System", "Computer Network", "Alternative English", "Aptitude"];
+export const SUBJECT_LIST: SubjectType[] = ["Artificial Intelligence (P)", "Artificial Intelligence (T)", "Software Engineering", "Machine Learning (P)", "Machine Learning (T)", "Full Stack Development - II (P)", "Full Stack Development - II (T)", "Cloud Computing"];
 
 export const FILE_CATEGORIES_LIST: FileCategoryType[] = [
     "Lab Assignment Question",
